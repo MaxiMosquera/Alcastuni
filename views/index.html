@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcastuni - Insumos y Productos de Calidad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            font-size: 16px;
+            background-color: #FFFFFF;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background-color: #1a5f7a;
+            color: #FFFFFF;
+            padding: 1rem;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #FFD700;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        .nav-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #FFD700;
+        }
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: #FFFFFF;
+            margin: 2px 0;
+            transition: 0.4s;
+        }
+        main {
+            padding: 2rem 0;
+        }
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #1a5f7a;
+        }
+        .hero {
+            background-color: #FFD700;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1a5f7a;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #333333;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .product-card {
+            border: 1px solid #f4f4f4;
+            border-radius: 5px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #FFFFFF;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .product-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            color: #1a5f7a;
+        }
+        .product-card a {
+            display: inline-block;
+            background-color: #1a5f7a;
+            color: #FFFFFF;
+            padding: 0.7rem 1.2rem;
+            text-decoration: none;
+            border-radius: 3px;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .product-card a:hover {
+            background-color: #FFD700;
+            color: #1a5f7a;
+        }
+        .about-us {
+            background-color: #f4f4f4;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        .about-us-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        footer {
+            background-color: #1a5f7a;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        footer a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: #ffffff;
+            border-radius: 50%;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+        .whatsapp-button svg {
+            width: 36px;
+            height: 36px;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background-color: #1a5f7a;
+                padding: 1rem;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .products {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Alcastuni</div>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="laboratorio.html">Laboratorio</a></li>
+                    <li><a href="medicos.html">Médicos</a></li>
+                    <li><a href="herreria.html">Herrería</a></li>
+                    <li><a href="frigorificos.html">Frigoríficos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Alcastuni - Insumos y Productos de Calidad</h1>
+                <p>Somos líderes en la provisión de insumos para laboratorios, productos médicos, herrería de acero inoxidable e insumos para frigoríficos.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <h2>Nuestros Productos</h2>
+            <div class="products">
+                <div class="product-card">
+                    <h3>Insumos para Laboratorio</h3>
+                    <p>Equipamiento y suministros de alta calidad para laboratorios.</p>
+                    <a href="laboratorio.html">Ver más</a>
+                </div>
+                <div class="product-card">
+                    <h3>Insumos Médicos</h3>
+                    <p>Productos médicos confiables para profesionales de la salud.</p>
+                    <a href="medicos.html">Ver más</a>
+                </div>
+                <div class="product-card">
+                    <h3>Herrería de Acero Inoxidable</h3>
+                    <p>Soluciones en acero inoxidable de alta calidad.</p>
+                    <a href="herreria.html">Ver más</a>
+                </div>
+                <div class="product-card">
+                    <h3>Insumos para Frigoríficos</h3>
+                    <p>Cofias, delantales, botas y más para la industria frigorífica.</p>
+                    <a href="frigorificos.html">Ver más</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-us" class="about-us">
+            <div class="container">
+                <h2>Quiénes Somos</h2>
+                <div class="about-us-content">
+                    <p>Alcastuni es una empresa familiar con más de 30 años de experiencia en el mercado. Nos dedicamos a la fabricación y distribución de insumos de alta calidad para diversos sectores industriales.</p>
+                    <p>Valoramos la confianza de nuestros clientes y trabajamos día a día para superar sus expectativas, ofreciendo productos de primera calidad y un servicio personalizado.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Alcastuni. Todos los derechos reservados.</p>
+            <p>Dirección: [Insertar dirección], Mercedes, Buenos Aires, Argentina</p>
+            <p>Teléfono: [Insertar teléfono] | Email: <a href="mailto:info@alcastuni.com">info@alcastuni.com</a></p>
+            <p>Desarrollado por Maximiliano Mosquera | <a href="mailto:maximilianomosquera.dev@gmail.com">maximilianomosquera.dev@gmail.com</a></p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/NUMERODEWHATSAPP" class="whatsapp-button" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24" fill="#ffffff">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.598.723 4.907 2.034 1.31 1.311 2.031 3.054 2.03 4.908-.001 3.825-3.113 6.938-6.937 6.938z"/>
+        </svg>
+    </a>
+
+    <script>
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
