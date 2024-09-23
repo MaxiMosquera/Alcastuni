@@ -100,7 +100,8 @@
             border: 1px solid #f4f4f4;
             border-radius: 5px;
             padding: 1.5rem;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             background-color: #FFFFFF;
         }
@@ -113,6 +114,16 @@
             font-size: 1.3rem;
             color: #1a5f7a;
         }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        .product-card p {
+            flex-grow: 1;
+        }
         .product-card a {
             display: inline-block;
             background-color: #1a5f7a;
@@ -122,6 +133,7 @@
             border-radius: 3px;
             margin-top: 1rem;
             transition: background-color 0.3s ease;
+            align-self: flex-start;
         }
         .product-card a:hover {
             background-color: #FFD700;
@@ -200,9 +212,6 @@
             .hero p {
                 font-size: 1rem;
             }
-            .products {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -239,21 +248,25 @@
             <h2>Nuestros Productos</h2>
             <div class="products">
                 <div class="product-card">
+                    <img src="../images/insumosLab.jpeg" alt="Equipamiento de laboratorio" width="300" height="200">
                     <h3>Insumos para Laboratorio</h3>
                     <p>Equipamiento y suministros de alta calidad para laboratorios.</p>
                     <a href="laboratorio.html">Ver más</a>
                 </div>
                 <div class="product-card">
+                    <img src="../images/insumosMed.jpeg" alt="Insumos médicos" width="300" height="200">
                     <h3>Insumos Médicos</h3>
                     <p>Productos médicos confiables para profesionales de la salud.</p>
                     <a href="medicos.html">Ver más</a>
                 </div>
                 <div class="product-card">
+                    <img src="../images/herreria.jpeg" alt="Herrería de acero inoxidable" width="300" height="200">
                     <h3>Herrería de Acero Inoxidable</h3>
                     <p>Soluciones en acero inoxidable de alta calidad.</p>
                     <a href="herreria.html">Ver más</a>
                 </div>
                 <div class="product-card">
+                    <img src="../images/frigorifico.jpeg" alt="Insumos para frigoríficos" width="300" height="200">
                     <h3>Insumos para Frigoríficos</h3>
                     <p>Cofias, delantales, botas y más para la industria frigorífica.</p>
                     <a href="frigorificos.html">Ver más</a>
@@ -274,9 +287,9 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2023 Alcastuni. Todos los derechos reservados.</p>
-            <p>Dirección: [Insertar dirección], Mercedes, Buenos Aires, Argentina</p>
-            <p>Teléfono: [Insertar teléfono] | Email: <a href="mailto:info@alcastuni.com">info@alcastuni.com</a></p>
+            <p>&copy; 2024 Alcastuni. Todos los derechos reservados.</p>
+            <p>Dirección: calle 35 N° 478, Mercedes, Buenos Aires, Argentina</p>
+            <p>Teléfono: +5491158254891 | Email: <a href="mailto:info@alcastuni.com">info@alcastuni.com</a></p>
             <p>Desarrollado por Maximiliano Mosquera | <a href="mailto:maximilianomosquera.dev@gmail.com">maximilianomosquera.dev@gmail.com</a></p>
         </div>
     </footer>
