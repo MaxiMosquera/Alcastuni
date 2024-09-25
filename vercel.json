@@ -1,0 +1,7 @@
+{
+    "routes": [
+      { "src": "/", "dest": "/views/index.html" },
+      { "src": "/(.+)\\.html", "dest": "/views/$1.html" },
+      { "src": "/images/(.*)", "dest": "/images/$1" }
+    ]
+  }
