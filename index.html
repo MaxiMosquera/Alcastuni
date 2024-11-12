@@ -6,8 +6,8 @@
     <title>Alcastuni - Insumos y Productos de Calidad</title>
     <style>
         :root {
-            --color-primary: #FF7F00;
-            --color-primary-dark: #E67300;
+            --color-primary: #0066FF;
+            --color-primary-dark: #0052CC;
             --color-secondary: #333333;
             --color-background: #FFFFFF;
             --color-text: #333333;
@@ -39,20 +39,85 @@
         header {
             background-color: var(--color-secondary);
             color: var(--color-text-light);
-            padding: 1rem;
             position: sticky;
             top: 0;
             z-index: 1000;
+            padding: 0.5rem 1rem;
         }
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 2rem;
         }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem; /* Espacio entre los logos */
+            padding: 0.5rem 0;
+    }
+
+        .logo-link {
+            display: block;
+            text-decoration: none;
+    }
+        .logo-image {
+            max-height: 100px; /* Ajusta esto según el tamaño de tu logo */
+            width: auto;
+            object-fit: contain;
+            
+    }
+        .brand-logo {
+            max-height: 70px;
+            width: auto;
+            object-fit: contain;
+            
+    }
+
+        .brands.container {
+            padding: 3rem 0;
+            background-color: var(--color-gray-light);
+    }
+
+        .brands.container h2 {
+            margin-bottom: 2rem;
+            color: var(--color-secondary);
+    }
+      
+
+        
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            justify-items: center;
+            align-items: center;
+    }
+
+        .brand-logo {
+            width: 100%;
+            height: 100px; /* Altura fija para todas las imágenes */
+            object-fit: contain; /* Mantiene la relación de aspecto */
+            object-position: center; /* Centra la imagen dentro del contenedor */
+            transition: transform 0.3s ease;
+            padding: 10px; /* Añade un poco de espacio alrededor de cada logo */
+            background-color: white; /* Fondo blanco para logos con fondo transparente */
+            border-radius: 5px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    }
+
+        .brand-logo:hover {
+             transform: scale(1.05);
+    }
+
+
+
         .logo {
             font-size: 2rem;
             font-weight: bold;
-            color: var(--color-primary);
+            font-family: Georgia, serif;
+            font-style: italic;
+            color: #0066FF;;
         }
         .nav-links {
             list-style: none;
@@ -136,6 +201,7 @@
             flex-direction: column;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             background-color: var(--color-background);
+            height: 100%;
         }
         .product-card:hover {
             transform: translateY(-5px);
@@ -153,9 +219,12 @@
             border-radius: 5px;
             margin-bottom: 1rem;
         }
-        .product-card p {
+        .product-card-content {
+            display: flex;
+            flex-direction: column;
             flex-grow: 1;
-        }
+            justify-content: space-between;
+    }
         .product-card a {
             display: inline-block;
             background-color: var(--color-primary);
@@ -255,6 +324,23 @@
             .hero p {
                 font-size: 1rem;
             }
+            .brand-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 1rem;
+        }
+            .brand-logo {
+                height: 80px; /* Altura ligeramente menor en pantallas más pequeñas */
+        }
+            .logo-image {
+                height: 60px; /* Versión móvil más grande que antes */
+        }
+            .brand-logo {
+                height: 50px;
+        }
+        
+            .logo-container {
+                gap: 1.5rem; /* Menos espacio en móvil */
+        }
         }
         /* Pantallas pequeñas (mayoría de los smartphones) */
 @media (max-width: 576px) {
@@ -309,11 +395,11 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">Alcastuni</div>
-                <div class="menu-toggle" id="mobile-menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <div class="logo-container">
+                    <a href="index.html" class="logo-link">
+                        <img src="images/Logo Alcastuni.jpg" alt="Alcastuni Logo" class="logo-image">
+                    </a>
+                    <img src="images/Nedeca logo nuevo-Photoroom.png" alt="Logo de la marca" class="brand-logo">
                 </div>
                 <ul class="nav-links" id="nav-links">
                     <li><a href="index.html">Inicio</a></li>
@@ -324,6 +410,11 @@
                     <li><a href="#about-us" class="nav-button">Sobre nosotros</a></li>
                     <li><a href="#footer" class="nav-button">Contacto</a></li>
                 </ul>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </nav>
         </div>
     </header>
@@ -332,7 +423,7 @@
         <section class="hero">
             <div class="container">
                 <h1>Alcastuni - Insumos y Productos de Calidad</h1>
-                <p>Somos líderes en la provisión de insumos para laboratorios, productos médicos, herrería de acero inoxidable e insumos para frigoríficos.</p>
+                <p>Somos líderes en la provisión de insumos para laboratorios,productos médicos,herrería de acero inoxidable e insumos para frigoríficos e industras de alimentos.</p>
             </div>
         </section>
 
@@ -341,28 +432,55 @@
             <div class="products">
                 <div class="product-card">
                     <img src="images/insumosLab.jpeg" alt="Equipamiento de laboratorio" width="300" height="200">
-                    <h3>Insumos para Laboratorio</h3>
-                    <p>Equipamiento y suministros de alta calidad para laboratorios.</p>
-                    <a href="laboratorio.html">Ver más</a>
+                    <div class="product-card-content">
+                        <h3>Insumos para Laboratorio</h3>
+                        <a href="laboratorio.html">Ver más</a>
+                    </div>
                 </div>
                 <div class="product-card">
                     <img src="images/insumosMed.jpeg" alt="Insumos médicos" width="300" height="200">
-                    <h3>Insumos Médicos</h3>
-                    <p>Productos médicos confiables para profesionales de la salud.</p>
-                    <a href="medicos.html">Ver más</a>
+                    <div class="product-card-content">
+                        <h3>Insumos Médicos</h3>
+                        <a href="medicos.html">Ver más</a>
+                    </div>
                 </div>
                 <div class="product-card">
                     <img src="images/herreria.jpeg" alt="Herrería de acero inoxidable" width="300" height="200">
-                    <h3>Herrería de Acero Inoxidable</h3>
-                    <p>Soluciones en acero inoxidable de alta calidad.</p>
-                    <a href="herreria.html">Ver más</a>
+                    <div class="product-card-content">
+                        <h3>Herrería de Acero Inoxidable</h3>
+                        <a href="herreria.html">Ver más</a>
+                    </div>
                 </div>
                 <div class="product-card">
                     <img src="images/frigorifico.jpeg" alt="Insumos para frigoríficos" width="300" height="200">
-                    <h3>Insumos para Frigoríficos</h3>
-                    <p>Cofias, delantales, botas y más para la industria frigorífica.</p>
-                    <a href="frigorificos.html">Ver más</a>
+                    <div class="product-card-content">
+                        <h3>Insumos para Frigoríficos</h3>
+                        <a href="frigorificos.html">Ver más</a>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <section class="brands container">
+            <h2>Representamos las más reconocidas marcas internacionales</h2>
+            <div class="brand-grid">
+                
+                <img src="images/Marcas comercializadas/3M logo.png" alt="Logo 3M" class="brand-logo">
+                <img src="images/Marcas comercializadas/Biokar.png" alt="Logo Biokar" class="brand-logo">
+                <img src="images/Marcas comercializadas/Biopack.jpg" alt="Logo Biopack" class="brand-logo">
+                <img src="images/Marcas comercializadas/Britania.jpg" alt="Logo Britania" class="brand-logo">
+                <img src="images/Marcas comercializadas/Cicarelli.png" alt="Logo de icarelli" class="brand-logo">
+                <img src="images/Marcas comercializadas/Deltalab logo.jpg" alt="Logo Deltalab" class="brand-logo">
+                <img src="images/Marcas comercializadas/Hanna.png" alt="Logo de Hanna" class="brand-logo">
+                <img src="images/Marcas comercializadas/Hixwer.png" alt="Logo de Hixwer" class="brand-logo">
+                <img src="images/Marcas comercializadas/Merck.jpg" alt="Logo de Merk" class="brand-logo">
+                <img src="images/Marcas comercializadas/Neogen logo.png" alt="Logo de Neogen" class="brand-logo">
+                <img src="images/Marcas comercializadas/Prognosis.jpg" alt="Logo de Prognosis" class="brand-logo">
+                <img src="images/Marcas comercializadas/Romer logo.png" alt="Logo de Romer" class="brand-logo">
+                <img src="images/Marcas comercializadas/Sanjor logo.jpg" alt="Logo de Sanjor" class="brand-logo">
+                <img src="images/Marcas comercializadas/Sigma.png" alt="Logo de Sigma" class="brand-logo">
+                <img src="images/Marcas comercializadas/testo.jpg" alt="Logo de Testo" class="brand-logo">
+                <img src="images/Marcas comercializadas/whirlpack.jpg" alt="Logo de Whirlpack" class="brand-logo">
             </div>
         </section>
 
@@ -370,8 +488,9 @@
             <div class="container">
                 <h2>Quiénes Somos</h2>
                 <div class="about-us-content">
-                    <p>Alcastuni es una empresa familiar con más de 30 años de experiencia en el mercado. Nos dedicamos a la fabricación y distribución de insumos de alta calidad para diversos sectores industriales.</p>
+                    <p>Alcastuni es una empresa  con más de 20 años de experiencia en el mercado. Nos dedicamos a la fabricación y distribución de insumos de alta calidad para profesionales e industriales.</p>
                     <p>Valoramos la confianza de nuestros clientes y trabajamos día a día para superar sus expectativas, ofreciendo productos de primera calidad y un servicio personalizado.</p>
+                    <p>Somos apasionados por la Industria Argentina.</p>
                 </div>
             </div>
         </section>
@@ -385,7 +504,7 @@
                 <p>Teléfono: +5491158254891 | Email: <a href="mailto:alcastuni@alcastuni.com.ar">alcastuni@alcastuni.com.ar</a></p>
             </div>
             <div class="footer-dev">
-                <p>Desarrollado por Maximiliano Mosquera | <a href="mailto:maximilianomosquera.dev@gmail.com">maximilianomosquera.dev@gmail.com</a></p>
+                <p>Desarrollado por Maximiliano Mosquera | <a href="mailto:maximiliano.mosquera1@gmail.com">maximiliano.mosquera1@gmail.com</a></p>
             </div>
         </div>
     </footer>
