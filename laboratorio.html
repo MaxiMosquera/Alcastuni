@@ -6,8 +6,8 @@
     <title>Alcastuni - Insumos para Laboratorio</title>
     <style>
         :root {
-            --color-primary: #FF7F00;
-            --color-primary-dark: #E67300;
+            --color-primary: #0066FF;
+            --color-primary-dark: #0052CC;
             --color-secondary: #333333;
             --color-background: #FFFFFF;
             --color-text: #333333;
@@ -31,6 +31,7 @@
         }
         .container {
             width: 100%;
+            max-width: 1200px;
             padding-right: 15px;
             padding-left: 15px;
             margin-right: auto;
@@ -44,20 +45,19 @@
             top: 0;
             z-index: 1000;
         }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--color-primary);
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .logo-image {
+            height: 60px;
+            width: auto;
         }
         .nav-links {
             list-style: none;
@@ -76,28 +76,6 @@
         .nav-links a:hover {
             color: var(--color-primary);
         }
-        .nav-button {
-            background-color: var(--color-primary);
-            color: var(--color-text-light);
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .nav-button:hover {
-            background-color: var(--color-primary-dark);
-        }
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background-color: var(--color-text-light);
-            margin: 2px 0;
-            transition: 0.4s;
-        }
         main {
             padding: 2rem 0;
         }
@@ -111,11 +89,28 @@
             padding: 3rem 0;
             text-align: center;
             margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0,102,255,0.7) 0%, rgba(0,82,204,0.7) 100%);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
             color: var(--color-text-light);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         .hero p {
             font-size: 1.2rem;
@@ -123,70 +118,88 @@
             margin: 0 auto;
             color: var(--color-text-light);
         }
+        .passion-statement {
+            background-color: var(--color-gray-light);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--color-primary);
+        }
         .products {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(5, 1fr);
             gap: 2rem;
             margin-bottom: 3rem;
         }
         .product-card {
             border: 1px solid var(--color-gray-medium);
-            border-radius: 5px;
+            border-radius: 10px;
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background-color: var(--color-background);
+            background-color: var(--color-gray-light);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
         .product-card h3 {
             margin-bottom: 1rem;
-            font-size: 1.3rem;
-            color: var(--color-secondary);
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            text-align: center;
+            height: 2.5em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover h3::after {
+            transform: scaleX(1);
         }
         .product-card img {
             width: 100%;
             height: 200px;
-            object-fit: cover;
+            object-fit: contain;
             border-radius: 5px;
             margin-bottom: 1rem;
+            background-color: var(--color-background);
+            padding: 0.5rem;
         }
         .product-card p {
             flex-grow: 1;
-        }
-        .product-card a {
-            display: inline-block;
-            background-color: var(--color-primary);
-            color: var(--color-text-light);
-            padding: 0.7rem 1.2rem;
-            text-decoration: none;
-            border-radius: 3px;
-            margin-top: 1rem;
-            transition: background-color 0.3s ease;
-            align-self: flex-start;
-        }
-        .product-card a:hover {
-            background-color: var(--color-primary-dark);
-        }
-
-        .product-description {
-            background-color: #f4f4f4;
-            padding: 2rem;
-            border-radius: 5px;
-            margin-bottom: 2rem;
-        }
-        .about-us {
-            background-color: var(--color-gray-light);
-            padding: 3rem 0;
-            margin-top: 3rem;
-        }
-        .about-us-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
+            font-size: 0.9rem;
         }
         footer {
             background-color: var(--color-secondary);
@@ -237,31 +250,37 @@
             width: 36px;
             height: 36px;
         }
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
+        @media (max-width: 1200px) {
+            .products {
+                grid-template-columns: repeat(3, 1fr);
             }
+        }
+        @media (max-width: 768px) {
             .nav-links {
                 display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                right: 0;
-                background-color: var(--color-secondary);
-                padding: 1rem;
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .nav-links li {
-                margin: 0.5rem 0;
             }
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             .hero p {
                 font-size: 1rem;
+            }
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -270,7 +289,9 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">Alcastuni</div>
+                <div class="logo-container">
+                    <img src="images/alcastuni-logo.png" alt="Alcastuni Logo" class="logo-image">
+                </div>
                 <ul class="nav-links">
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="laboratorio.html">Laboratorio</a></li>
@@ -284,32 +305,82 @@
 
     <main>
         <section class="hero">
-            <div class="container">
-                <h1>Insumos para Laboratorio</h1>
-                <p>Equipamiento y suministros de alta calidad para garantizar la precisión y confiabilidad en cada experimento.</p>
+            <div class="hero-content">
+                <div class="container">
+                    <h1>Insumos para Laboratorio</h1>
+                    <p>En Alcastuni nos reconforta sentir que trabajamos para dar soluciones y podemos ofrecer todos los insumos y equipos de laboratorio necesarios en cualquier laboratorio microbiológico y fisicoquímico.</p>
+                </div>
             </div>
         </section>
 
         <section class="container">
-            <div class="product-images">
-                <img src="/placeholder.svg?height=300&width=300" alt="Microscopio de alta precisión">
-                <img src="/placeholder.svg?height=300&width=300" alt="Set de tubos de ensayo">
-                <img src="/placeholder.svg?height=300&width=300" alt="Balanza analítica">
-                <img src="/placeholder.svg?height=300&width=300" alt="Campana de extracción">
+            <div class="passion-statement">
+                <p>Nuestra pasión por la Industria Argentina y el emprendedorismo que nos llena el alma nos empujó a desarrollar y fabricar medios de cultivo e insumos descartables para laboratorios de la más alta calidad garantizando resultados confiables.</p>
             </div>
 
-            <div class="product-description">
-                <h2>Nuestros Productos para Laboratorio</h2>
-                <p>En Alcastuni, nos enorgullecemos de ofrecer una amplia gama de insumos y equipos de laboratorio de la más alta calidad. Nuestro catálogo incluye:</p>
-                <ul>
-                    <li>Microscopios ópticos y electrónicos de última generación</li>
-                    <li>Instrumentos de medición precisos, como balanzas analíticas y pipetas</li>
-                    <li>Equipos de seguridad, incluyendo campanas de extracción y gafas protectoras</li>
-                    <li>Material de vidrio y plástico, como tubos de ensayo, matraces y placas de Petri</li>
-                    <li>Reactivos y productos químicos de grado analítico</li>
-                    <li>Mobiliario especializado para laboratorios</li>
-                </ul>
-                <p>Todos nuestros productos cumplen con los estándares internacionales de calidad y seguridad, garantizando resultados confiables en sus investigaciones y análisis.</p>
+            <h2 class="section-title">Nuestros Productos</h2>
+
+            <div class="products">
+                <div class="product-card">
+                    <img src="/images/AP.jpg" alt="Agua peptonada">
+                    <h3>Agua peptonada 0,1% estéril</h3>
+                    <p>Diluyente recomendado para diluciones en microbiología. Volumenes disponibles: 9 ml, 10 ml, 25 ml,40 ml, 90 ml, 99 ml, 225 ml.</p>
+                    <p>Consultar por otros volumenes y marca blanca</p>
+                </div>
+                <div class="product-card">
+                    <img src="/images/APB.jpg" alt="Agua peptonada bufferada">
+                    <h3>Agua peptonada bufferada estéril</h3>
+                    <p>Diluyente recomendado para enrequecimientos de Salmonella y E.Colo 0157:H7 y diluciones en microbiología. Volumenes disponibles: 9 ml, 10 ml, 25 ml,40 ml, 90 ml, 99 ml, 225 ml, 585 ml, 3375 ml.</p>
+                </div>
+                <div class="product-card">
+                    <img src="/images/Agua destilada.jpg" alt="Agua destilada">
+                    <h3>Agua destilada estéril</h3>
+                    <p>Volúmenes disponibles: 200 ml, 225 ml.</p>
+                </div>
+                <div class="product-card">
+                    <img src="/images/DF y CFA.jpg" alt="Demi Fraser y Citrato Ferraico Amónico">
+                    <h3>Demi Fraser y Citrato Férrico Amónico estériles</h3>
+                    <p>Diluyente recomendado para enriquecimiento para análisis de Listeria con 3M MDS.</p>
+                    <p>Volúmenes disponibles: Demi Fraser 225 ml, Citrato Férrico Amónico 5% 2,25 ml</p>
+                </div>
+                <div class="product-card">
+                    <img src="/images/Hisopos.jpg" alt="Hisopo estéril">
+                    <h3>Hisopos estériles</h3>
+                    <p>Secos o con caldo. Ideales para muestreos en microbiología.</p>
+                    <p>Caldos disponibles: Agua peptonada 0,1%, Caldo Letheen, D/E neutralizing broth.</p>
+                    <p>Volúmenes disponibles: 1 ml, 5 ml, 10 ml, 20ml</p>
+                </div>
+                <div class="product-card">
+                    <img src="/images/Bolsas esponja.jpg" alt="Bolsa estéril cierre zipper">
+                    <h3>Bolsas estériles</h3>
+                    <p>Cierre zipper que garantiza ausencia de derrames. Aptas para stomacher</p>
+                    <p>Modelo con esponja ideal para muestreo de superficies y carcasas. </p>
+                </div>
+                <div class="product-card">
+                    <img src="/images/Tips.jpg" alt="Tips estériles">
+                    <h3>Tips estériles</h3>
+                    <p>Puntas para pipetas con y sin filtro para siembras de muestras en microbiología.</p>
+                    <p>Volúmenes disponibles: 50 ul, 100 ul, 200 ul, 1000 ul</p>
+                    <p>En todos los casos se puede consultar por otros volúmenes, presentaciones y marca blanca. </p>
+                </div>
+                <div class="product-card">
+                    <img src="/images/Farma.jpg" alt="Medios de cultivo boca perforable">
+                    <h3>Medios de cultivo boca perforable</h3>
+                    <p>Recomendados para control de esterilidad según capítulo 71 de la Farmacopea.</p>
+                    <p>TSB, Tioglicolato, Fluído A, Fluído D.</p>
+                </div>
+                <div class="product-card">
+                    <img src="/images/PET.jpg" alt="Botellas estériles">
+                    <h3>Botellas estériles</h3>
+                    <p>Ideales para muestras de agua de pozo, red y otras muestras líquidas.</p>
+                    <p>CON o SIN Tiosulfato de Sodio</p>
+                    <p>Volúmenes disponibles: 30 ml, 50 ml, 100 ml, 250 ml, 500 ml, 1000 ml</p>
+                </div>
+                <div class="product-card">
+                    <img src="/images/Colector lechero.jpg" alt="Colector lechero">
+                    <h3>Colectores estériles para control lechero</h3>
+                    <p>Cierre estanco que garantiza la ausencia de derrames. </p>
+                </div>
             </div>
         </section>
     </main>

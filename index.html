@@ -53,71 +53,22 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 2.5rem; /* Espacio entre los logos */
+            gap: 2.5rem;
             padding: 0.5rem 0;
-    }
-
+        }
         .logo-link {
             display: block;
             text-decoration: none;
-    }
+        }
         .logo-image {
-            max-height: 100px; /* Ajusta esto según el tamaño de tu logo */
+            max-height: 100px;
             width: auto;
             object-fit: contain;
-            
-    }
+        }
         .brand-logo {
             max-height: 70px;
             width: auto;
             object-fit: contain;
-            
-    }
-
-        .brands.container {
-            padding: 3rem 0;
-            background-color: var(--color-gray-light);
-    }
-
-        .brands.container h2 {
-            margin-bottom: 2rem;
-            color: var(--color-secondary);
-    }
-      
-
-        
-        .brand-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            justify-items: center;
-            align-items: center;
-    }
-
-        .brand-logo {
-            width: 100%;
-            height: 100px; /* Altura fija para todas las imágenes */
-            object-fit: contain; /* Mantiene la relación de aspecto */
-            object-position: center; /* Centra la imagen dentro del contenedor */
-            transition: transform 0.3s ease;
-            padding: 10px; /* Añade un poco de espacio alrededor de cada logo */
-            background-color: white; /* Fondo blanco para logos con fondo transparente */
-            border-radius: 5px; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
-    }
-
-        .brand-logo:hover {
-             transform: scale(1.05);
-    }
-
-
-
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            font-family: Georgia, serif;
-            font-style: italic;
-            color: #0066FF;;
         }
         .nav-links {
             list-style: none;
@@ -171,11 +122,28 @@
             padding: 3rem 0;
             text-align: center;
             margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0,102,255,0.7) 0%, rgba(0,82,204,0.7) 100%);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
             color: var(--color-text-light);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         .hero p {
             font-size: 1.2rem;
@@ -183,9 +151,23 @@
             margin: 0 auto;
             color: var(--color-text-light);
         }
-        img {
-            max-width: 100%;
-            height: auto;
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--color-primary);
         }
         .products {
             display: grid;
@@ -195,22 +177,35 @@
         }
         .product-card {
             border: 1px solid var(--color-gray-medium);
-            border-radius: 5px;
+            border-radius: 10px;
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background-color: var(--color-background);
-            height: 100%;
+            background-color: var(--color-gray-light);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
         .product-card h3 {
             margin-bottom: 1rem;
             font-size: 1.3rem;
-            color: var(--color-secondary);
+            color: var(--color-primary);
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        .product-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: var(--color-primary);
         }
         .product-card img {
             width: 100%;
@@ -224,20 +219,53 @@
             flex-direction: column;
             flex-grow: 1;
             justify-content: space-between;
-    }
+        }
         .product-card a {
             display: inline-block;
             background-color: var(--color-primary);
             color: var(--color-text-light);
             padding: 0.7rem 1.2rem;
             text-decoration: none;
-            border-radius: 3px;
+            border-radius: 5px;
             margin-top: 1rem;
             transition: background-color 0.3s ease;
-            align-self: flex-start;
+            align-self: center;
+            font-weight: bold;
         }
         .product-card a:hover {
             background-color: var(--color-primary-dark);
+        }
+        .brands {
+            background-color: var(--color-gray-light);
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        .brands h2 {
+            font-size: 2.2rem;
+            color: var(--color-secondary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            justify-items: center;
+            align-items: center;
+        }
+        .brand-logo {
+            width: 100%;
+            height: 100px;
+            object-fit: contain;
+            object-position: center;
+            transition: transform 0.3s ease;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .brand-logo:hover {
+            transform: scale(1.05);
         }
         .about-us {
             background-color: var(--color-gray-light);
@@ -319,7 +347,7 @@
                 margin: 0.5rem 0;
             }
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             .hero p {
                 font-size: 1rem;
@@ -327,68 +355,38 @@
             .brand-grid {
                 grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
                 gap: 1rem;
-        }
+            }
             .brand-logo {
-                height: 80px; /* Altura ligeramente menor en pantallas más pequeñas */
-        }
+                height: 80px;
+            }
             .logo-image {
-                height: 60px; /* Versión móvil más grande que antes */
-        }
-            .brand-logo {
-                height: 50px;
-        }
-        
+                height: 60px;
+            }
             .logo-container {
-                gap: 1.5rem; /* Menos espacio en móvil */
+                gap: 1.5rem;
+            }
         }
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 0.9rem;
+            }
+            .product-card {
+                padding: 1rem;
+            }
         }
-        /* Pantallas pequeñas (mayoría de los smartphones) */
-@media (max-width: 576px) {
-    /* Estilos para smartphones pequeños */
-    .hero h1 {
-        font-size: 1.8rem;
-    }
-    .hero p {
-        font-size: 0.9rem;
-    }
-    .product-card {
-        padding: 1rem;
-    }
-}
-
-/* Pantallas medianas (smartphones más grandes y tablets pequeñas) */
-@media (min-width: 577px) and (max-width: 767px) {
-    /* Estilos para smartphones grandes y tablets pequeñas */
-    .hero h1 {
-        font-size: 2rem;
-    }
-    .hero p {
-        font-size: 1rem;
-    }
-}
-
-/* Tablets y dispositivos más grandes */
-@media (min-width: 768px) and (max-width: 991px) {
-    /* Estilos para tablets */
-    .products {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Pantallas grandes */
-@media (min-width: 992px) {
-    /* Estilos para pantallas de escritorio */
-    .container {
-        max-width: 960px;
-    }
-}
-
-/* Pantallas extra grandes */
-@media (min-width: 1200px) {
-    .container {
-        max-width: 1140px;
-    }
-}
+        @media (min-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+        }
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1140px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -421,66 +419,73 @@
 
     <main>
         <section class="hero">
-            <div class="container">
-                <h1>Alcastuni - Insumos y Productos de Calidad</h1>
-                <p>Somos líderes en la provisión de insumos para laboratorios,productos médicos,herrería de acero inoxidable e insumos para frigoríficos e industras de alimentos.</p>
+            <div class="hero-content">
+                <div class="container">
+                    <h1>Alcastuni - Insumos y Productos de Calidad</h1>
+                    <p>Somos líderes en la provisión de insumos para laboratorios, productos médicos, herrería de acero inoxidable e insumos para frigoríficos e industrias de alimentos.</p>
+                </div>
             </div>
         </section>
 
         <section class="container">
-            <h2>Nuestros Productos</h2>
+            <h2 class="section-title">Nuestros Productos</h2>
             <div class="products">
                 <div class="product-card">
-                    <img src="images/insumosLab.jpeg" alt="Equipamiento de laboratorio" width="300" height="200">
+                    <img src="images/insumosLab.jpeg" alt="Equipamiento de laboratorio">
                     <div class="product-card-content">
                         <h3>Insumos para Laboratorio</h3>
+                        <p>Equipos y suministros de alta calidad para laboratorios microbiológicos y fisicoquímicos.</p>
                         <a href="laboratorio.html">Ver más</a>
                     </div>
                 </div>
                 <div class="product-card">
-                    <img src="images/insumosMed.jpeg" alt="Insumos médicos" width="300" height="200">
+                    <img src="images/insumosMed.jpeg" alt="Insumos médicos">
                     <div class="product-card-content">
                         <h3>Insumos Médicos</h3>
+                        <p>Productos y equipamiento médico de última generación para profesionales de la salud.</p>
                         <a href="medicos.html">Ver más</a>
                     </div>
                 </div>
                 <div class="product-card">
-                    <img src="images/herreria.jpeg" alt="Herrería de acero inoxidable" width="300" height="200">
+                    <img src="images/herreria.jpeg" alt="Herrería de acero inoxidable">
                     <div class="product-card-content">
                         <h3>Herrería de Acero Inoxidable</h3>
+                        <p>Soluciones en acero inoxidable de alta calidad para diversas aplicaciones industriales.</p>
                         <a href="herreria.html">Ver más</a>
                     </div>
                 </div>
                 <div class="product-card">
-                    <img src="images/frigorifico.jpeg" alt="Insumos para frigoríficos" width="300" height="200">
+                    <img src="images/frigorifico.jpeg" alt="Insumos para frigoríficos">
                     <div class="product-card-content">
                         <h3>Insumos para Frigoríficos</h3>
+                        <p>Productos especializados para la industria frigorífica y de procesamiento de alimentos.</p>
                         <a href="frigorificos.html">Ver más</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="brands container">
-            <h2>Representamos las más reconocidas marcas internacionales</h2>
-            <div class="brand-grid">
-                
-                <img src="images/Marcas comercializadas/3M logo.png" alt="Logo 3M" class="brand-logo">
-                <img src="images/Marcas comercializadas/Biokar.png" alt="Logo Biokar" class="brand-logo">
-                <img src="images/Marcas comercializadas/Biopack.jpg" alt="Logo Biopack" class="brand-logo">
-                <img src="images/Marcas comercializadas/Britania.jpg" alt="Logo Britania" class="brand-logo">
-                <img src="images/Marcas comercializadas/Cicarelli.png" alt="Logo de icarelli" class="brand-logo">
-                <img src="images/Marcas comercializadas/Deltalab logo.jpg" alt="Logo Deltalab" class="brand-logo">
-                <img src="images/Marcas comercializadas/Hanna.png" alt="Logo de Hanna" class="brand-logo">
-                <img src="images/Marcas comercializadas/Hixwer.png" alt="Logo de Hixwer" class="brand-logo">
-                <img src="images/Marcas comercializadas/Merck.jpg" alt="Logo de Merk" class="brand-logo">
-                <img src="images/Marcas comercializadas/Neogen logo.png" alt="Logo de Neogen" class="brand-logo">
-                <img src="images/Marcas comercializadas/Prognosis.jpg" alt="Logo de Prognosis" class="brand-logo">
-                <img src="images/Marcas comercializadas/Romer logo.png" alt="Logo de Romer" class="brand-logo">
-                <img src="images/Marcas comercializadas/Sanjor logo.jpg" alt="Logo de Sanjor" class="brand-logo">
-                <img src="images/Marcas comercializadas/Sigma.png" alt="Logo de Sigma" class="brand-logo">
-                <img src="images/Marcas comercializadas/testo.jpg" alt="Logo de Testo" class="brand-logo">
-                <img src="images/Marcas comercializadas/whirlpack.jpg" alt="Logo de Whirlpack" class="brand-logo">
+        <section class="brands">
+            <div class="container">
+                <h2>Representamos las más reconocidas marcas internacionales</h2>
+                <div class="brand-grid">
+                    <img src="images/Marcas comercializadas/3M logo.png" alt="Logo 3M" class="brand-logo">
+                    <img src="images/Marcas comercializadas/Biokar.png" alt="Logo Biokar" class="brand-logo">
+                    <img src="images/Marcas comercializadas/Biopack.jpg" alt="Logo Biopack" class="brand-logo">
+                    <img src="images/Marcas comercializadas/Britania.jpg" alt="Logo Britania" class="brand-logo">
+                    <img src="images/Marcas comercializadas/Cicarelli.png" alt="Logo de Cicarelli" class="brand-logo">
+                    <img src="images/Marcas comercializadas/Deltalab logo.jpg" alt="Logo Deltalab" class="brand-logo">
+                    <img src="images/Marcas comercializadas/Hanna.png" alt="Logo de Hanna" class="brand-logo">
+                    <img src="images/Marcas comercializadas/Hixwer.png" alt="Logo de Hixwer" class="brand-logo">
+                    <img src="images/Marcas comercializadas/Merck.jpg" alt="Logo de Merck" class="brand-logo">
+                    <img src="images/Marcas comercializadas/Neogen logo.png" alt="Logo de Neogen" class="brand-logo">
+                    <img src="images/Marcas comercializadas/Prognosis.jpg" alt="Logo de Prognosis" class="brand-logo">
+                    <img src="images/Marcas comercializadas/Romer logo.png" alt="Logo de Romer" class="brand-logo">
+                    <img src="images/Marcas comercializadas/Sanjor logo.jpg" alt="Logo de Sanjor" class="brand-logo">
+                    <img src="images/Marcas comercializadas/Sigma.png" alt="Logo de Sigma" class="brand-logo">
+                    <img src="images/Marcas comercializadas/testo.jpg" alt="Logo de Testo" class="brand-logo">
+                    <img src="images/Marcas comercializadas/whirlpack.jpg" alt="Logo de Whirlpack" class="brand-logo">
+                </div>
             </div>
         </section>
 
@@ -488,7 +493,7 @@
             <div class="container">
                 <h2>Quiénes Somos</h2>
                 <div class="about-us-content">
-                    <p>Alcastuni es una empresa  con más de 20 años de experiencia en el mercado. Nos dedicamos a la fabricación y distribución de insumos de alta calidad para profesionales e industriales.</p>
+                    <p>Alcastuni es una empresa con más de 20 años de experiencia en el mercado. Nos dedicamos a la fabricación y distribución de insumos de alta calidad para profesionales e industriales.</p>
                     <p>Valoramos la confianza de nuestros clientes y trabajamos día a día para superar sus expectativas, ofreciendo productos de primera calidad y un servicio personalizado.</p>
                     <p>Somos apasionados por la Industria Argentina.</p>
                 </div>
