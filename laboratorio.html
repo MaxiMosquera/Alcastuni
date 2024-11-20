@@ -262,6 +262,11 @@
             margin: 2px 0;
             transition: 0.4s;
         }
+        .brand-logo {
+            max-height: 70px;
+            width: auto;
+            object-fit: contain;
+        }
         @media (max-width: 1200px) {
             .products {
                 grid-template-columns: repeat(3, 1fr);
@@ -299,6 +304,12 @@
             .section-title {
                 font-size: 2rem;
             }
+            .logo-container {
+                gap: 1.5rem;
+            }
+            .logo-image, .brand-logo {
+                height: 50px;
+            }
         }
         @media (max-width: 480px) {
             .products {
@@ -318,7 +329,10 @@
         <div class="container">
             <nav>
                 <div class="logo-container">
-                    <img src="images/alcastuni-logo.png" alt="Alcastuni Logo" class="logo-image">
+                    <a href="index.html" class="logo-link">
+                        <img src="images/Logo Alcastuni.jpg" alt="Alcastuni Logo" class="logo-image">
+                    </a>
+                    <img src="images/Nedeca logo nuevo-Photoroom.png" alt="Logo de Nedeca" class="brand-logo">
                 </div>
                 <ul class="nav-links" id="nav-links">
                     <li><a href="index.html">Inicio</a></li>
